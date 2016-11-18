@@ -1,3 +1,7 @@
+
+
+
+
 .grafana-app {
 	position: relative;
 
@@ -45,7 +49,7 @@
 	color:White;
 }
 
-gf-time-picker .gf-timepicker-time-control, gf-time-picker .dashnav-refresh-action {
+gf-time-picker .gf-timepicker-time-control, gf-time-picker .dashnav-refresh-action, .navbar-brand-btn  {
 	display: none;
 }
 
@@ -104,25 +108,190 @@ navbar .navbar-page-btn {
 
 .panel-title {
 	-moz-border-bottom-colors: none;
--moz-border-left-colors: none;
--moz-border-right-colors: none;
--moz-border-top-colors: none;
-background-color: #ffffff;
-border-color: #e7eaec;
-border-image: none;
-border-style: solid solid none;
-border-width: 2px 0 0;
-color: inherit;
-margin-bottom: 0;
-padding: 15px 15px 7px;
-min-height: 48px;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background-color: #ffffff;
+	border-color: #e7eaec;
+	border-image: none;
+	border-style: solid solid none;
+	border-width: 2px 0 0;
+	color: inherit;
+	margin-bottom: 0;
+	padding: 15px 15px 7px;
+	min-height: 48px;
+
+
+	.panel-title-text {
+		display: inline-block;
+		font-size: 14px;
+		margin: 0 0 7px;
+		padding: 0;
+		text-overflow: ellipsis;
+		float: left;
+	}
 }
 
-.panel-title-text {
-	display: inline-block;
-font-size: 14px;
-margin: 0 0 7px;
-padding: 0;
-text-overflow: ellipsis;
-float: left;
+.row-open {
+	left:-15px;
+
+	&:hover {
+    	left: 0px; 
+    }
+}
+
+
+.btn {
+	background-image: none;
+	background-image: none;
+text-shadow: none;
+box-shadow: none;
+}
+
+.gf-form-label {
+	padding-left: 0;
+	background: transparent;
+}
+
+/* MAP INSPINIA TABS TO GRAFANA CLASSES */
+
+.tabbed-view {
+	background-image:none;
+
+  .gf-tabs > li > a.active,
+  .gf-tabs > li > a.active:hover,
+  .gf-tabs > li > a.active:focus {
+    border: 1px solid $border-color !important;
+    border-bottom-color: transparent !important;
+    background-color: #fff !important;
+  }
+
+  .gf-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+  }
+
+  .tab-pane .panel-body {
+    border-top: none;
+  }
+
+  .gf-tabs > li > a.active , .gf-tabs > li > a.active :hover, .gf-tabs > li > a.active :focus {
+    border: 1px solid $border-color;
+    border-bottom-color: transparent;
+  }
+
+  .tabbed-view-header {
+    border-bottom: 1px solid $border-color;
+    border-image:none
+  }
+
+  .tab-pane .panel-body {
+    border-top: none;
+  }
+
+  .gf-tabs > li a:hover {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .tabbed-view-body{
+    display: block;
+  }
+
+
+
+}
+
+
+
+
+
+/* MAP INSPINIA BUTTONS TO GRAFANA CLASSES */
+
+.btn-inverse {
+  color: inherit;
+  background: white;
+  background-image:none;
+  border: 1px solid $border-color;
+}
+
+.btn-inverse:hover, .btn-inverse:focus, .btn-inverse:active, .btn-inverse.active, .open .dropdown-toggle.btn-inverse, .btn-inverse:active:focus, .btn-inverse:active:hover, .btn-inverse.active:hover, .btn-inverse.active:focus {
+  color: inherit;
+  border: 1px solid #d2d2d2;
+}
+
+.btn-inverse:active, .btn-inverse.active, .open .dropdown-toggle.btn-inverse{
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+}
+
+.btn-inverse.disabled, .btn-inverse.disabled:hover, .btn-inverse.disabled:focus, .btn-inverse.disabled:active, .btn-inverse.disabled.active, .btn-inverse[disabled], .btn-inverse[disabled]:hover, .btn-inverse[disabled]:focus, .btn-inverse[disabled]:active, .btn-inverse.active[disabled], fieldset[disabled] .btn-inverse, fieldset[disabled] .btn-inverse:hover, fieldset[disabled] .btn-inverse:focus, fieldset[disabled] .btn-inverse:active, fieldset[disabled] .btn-inverse.active {
+  color: #cacaca;
+}
+
+
+/* MAP INSPINIA panel-containerES TO GRAFANA PANELS */
+
+
+.panel-container {
+  clear: both;
+  margin-bottom: 25px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.panel-container.collapsed .panel-container-content {
+  display: none;
+}
+
+.panel-container.collapsed .fa.fa-chevron-up:before {
+  content: "\f078";
+}
+
+.panel-container.collapsed .fa.fa-chevron-down:before {
+  content: "\f077";
+}
+
+.panel-container:after, .panel-container:before {
+  display: table;
+}
+
+.panel-title-container {
+	padding:0;
+	.panel-title {
+	  -moz-border-bottom-colors: none;
+	  -moz-border-left-colors: none;
+	  -moz-border-right-colors: none;
+	  -moz-border-top-colors: none;
+	  background-color: $ibox-title-bg;
+	  border-color: $border-color;
+	  border-image: none;
+	  border-style: solid solid none;
+	  border-width: 2px 0 0;
+	  color: inherit;
+	  margin-bottom: 0;
+	  padding: 15px 15px 7px;
+	  min-height: 48px;
+	}
+}
+
+
+
+
+.panel-content {
+  background-color: $ibox-content-bg;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+
+  border-color: $border-color;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+}
+
+.panel-footer {
+  color: inherit;
+  border-top: 1px solid $border-color;
+  font-size: 90%;
+  background: #ffffff;
+  padding: 10px 15px;
 }

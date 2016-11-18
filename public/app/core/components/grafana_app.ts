@@ -87,6 +87,8 @@ export function grafanaAppDirective(playlistSrv, contextSrv) {
             ignoreSideMenuHide = false;
           }, 300);
         }
+
+
       });
 
       scope.$watch('contextSrv.pinned', newVal => {
@@ -95,6 +97,12 @@ export function grafanaAppDirective(playlistSrv, contextSrv) {
         }
       });
 
+      //Ignore Everything and Always show the sidemenu
+
+      body.toggleClass('sidemenu-open', true);
+      contextSrv.setPinnedState(true);
+      body.toggleClass('sidemenu-pinned', true);
+      
       // tooltip removal fix
       // manage page classes
       var pageClass;
