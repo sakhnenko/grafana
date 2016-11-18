@@ -11,6 +11,7 @@
 			<div class="sidemenu-org-details">
 				<span class="sidemenu-org-user sidemenu-item-text">{{::ctrl.user.name}}</span>
 				<span class="sidemenu-org-name sidemenu-item-text">{{::ctrl.user.orgName}}</span>
+				<span class="sidemenu-org-name sidemenu-item-text">{{::ctrl}}</span>
 			</div>
 		</a>
 		<i class="fa fa-caret-right"></i>
@@ -24,6 +25,35 @@
 			</li>
 		</ul>
 	</li>
+
+	<li class="sidemenu-org-section"  class="dropdown">
+		<ul role="menu" class="search-results-container" ng-if="!ctrl.tagsMode">
+			<li ng-hide="ctrl.results.length">No dashboards matching your query were found.</li>
+			<li ng-repeat="row in ctrl.results">
+			
+		
+
+		<a class="search-item pointer search-item-{{row.type}}" bindonce ng-class="{'selected': $index == ctrl.selectedIndex}" ng-href="{{row.url}}">
+
+			<span class="search-result-tags">
+				<span ng-click="ctrl.filterByTag(tag, $event)" ng-repeat="tag in row.tags" tag-color-from-name="tag"  class="label label-tag">
+					{{tag}}
+				</span>
+				<i class="fa" ng-class="{'fa-star': row.isStarred, 'fa-star-o': !row.isStarred}"></i>
+			</span>
+
+			<span class="search-result-link">
+				<i class="fa search-result-icon"></i>
+				<span bo-text="row.title"></span>
+			</span>
+		</a>
+
+			</li>
+		</ul>
+	</li>
+
+
+
 
 	<li ng-repeat="item in ::ctrl.mainLinks" class="dropdown">
 		<a href="{{::item.url}}" class="sidemenu-item sidemenu-main-link" target="{{::item.target}}">

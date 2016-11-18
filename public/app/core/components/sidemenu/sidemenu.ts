@@ -1,9 +1,11 @@
 ///<reference path="../../../headers/common.d.ts" />
 
+import angular from 'angular';
 import config from 'app/core/config';
 import _ from 'lodash';
 import $ from 'jquery';
 import coreModule from '../../core_module';
+import appEvents from 'app/core/app_events';
 
 export class SideMenuCtrl {
   isSignedIn: boolean;
@@ -14,8 +16,21 @@ export class SideMenuCtrl {
   appSubUrl: string;
   loginUrl: string;
 
+  isOpen: boolean;
+  query: any;
+  giveSearchFocus: number;
+  selectedIndex: number;
+  results: any;
+  currentSearchId: number;
+  tagsMode: boolean;
+  showImport: boolean;
+  dismiss: any;
+  ignoreClose: any;
+
+
+
   /** @ngInject */
-  constructor(private $scope, private $location, private contextSrv, private backendSrv, private $element) {
+  constructor(private $scope, private $location,private $timeout, private contextSrv, private backendSrv, private $element) {
     this.isSignedIn = contextSrv.isSignedIn;
     this.user = contextSrv.user;
     this.appSubUrl = config.appSubUrl;
@@ -23,6 +38,7 @@ export class SideMenuCtrl {
 
     this.mainLinks = config.bootData.mainNavLinks;
     this.openUserDropdown();
+    this.openSearch();
     this.loginUrl = 'login?redirect=' + encodeURIComponent(this.$location.path());
 
     this.$scope.$on('$routeChangeSuccess', () => {
@@ -32,6 +48,59 @@ export class SideMenuCtrl {
       this.loginUrl = 'login?redirect=' + encodeURIComponent(this.$location.path());
     });
   }
+
+
+  openSearch() {
+    console.log("Open sesamie");
+
+    this.isOpen = true;
+    this.giveSearchFocus = 0;
+    this.selectedIndex = -1;
+    this.results = [];
+    this.query = { query: '', tag: [], starred: false };
+    this.currentSearchId = 0;
+    this.ignoreClose = true;
+
+    this.$timeout(() => {
+      this.ignoreClose = false;
+      this.giveSearchFocus = this.giveSearchFocus + 1;
+      this.query.query = '';
+      this.search();
+    }, 100);
+  }
+
+  searchDashboards() {
+    this.tagsMode = false;
+    this.currentSearchId = this.currentSearchId + 1;
+    var localSearchId = this.currentSearchId;
+
+    return this.backendSrv.search(this.query).then((results) => {
+      if (localSearchId < this.currentSearchId) { return; }
+
+      this.results = _.map(results, function(dash) {
+        dash.url = 'dashboard/' + dash.uri;
+        return dash;
+      });
+
+      if (this.queryHasNoFilters()) {
+        this.results.unshift({ title: 'Home', url: config.appSubUrl + '/', type: 'dash-home' });
+      }
+    });
+  };
+
+  search() {
+    this.showImport = false;
+    this.selectedIndex = 0;
+    this.searchDashboards();
+  };
+
+
+  queryHasNoFilters() {
+    var query = this.query;
+    return query.query === '' && query.starred === false && query.tag.length === 0;
+  };
+
+
 
  getUrl(url) {
    return config.appSubUrl + url;

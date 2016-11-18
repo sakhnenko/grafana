@@ -24,9 +24,9 @@
 	<body ng-cloak>
 		<grafana-app class="grafana-app">
 
-			<aside class="sidemenu-wrapper">
-				<sidemenu ng-if="contextSrv.sidemenu"></sidemenu>
-			</aside>
+			<nav class="sidemenu-wrapper navbar-default">
+				<sidemenu ></sidemenu>
+			</nav>
 
 			<div class="page-alert-list">
 				<div ng-repeat='alert in dashAlerts.list' class="alert-{{alert.severity}} alert">
@@ -38,7 +38,7 @@
 				</div>
 			</div>
 
-			<div ng-view class="main-view"></div>
+			<div ng-view class="main-view gray-bg"></div>
 			<footer class="footer">
 				<div class="row text-center">
 					<ul>

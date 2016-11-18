@@ -1,0 +1,128 @@
+.grafana-app {
+	position: relative;
+
+	.main-view {
+		margin-left: 220px;
+		position: absolute;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		top: 0;
+		.dashboard-container {
+			padding-left: 0;
+			overflow: hidden;
+		}
+	}
+}
+
+
+.search-results-container {
+	height: auto;
+	background: #293846;
+	padding: 10px 0;
+}
+
+.sidemenu > li.active .dropdown-menu, .sidemenu > li:hover .dropdown-menu {
+	left: 215px;
+}
+
+.search-field-wrapper {
+	display:none;
+}
+
+.search-results-container .search-item.selected, .search-results-container .search-item:hover, .search-results-container .search-item {
+	background:transparent;
+}
+.search-results-container .search-result-tags {
+	display: none;
+}
+.search-results-container .search-result-link {
+	color:#a7b1c2;
+	font-weight: 600;
+}
+
+.search-item.selected .search-result-link, .search-item .search-result-link:hover {
+	color:White;
+}
+
+gf-time-picker .gf-timepicker-time-control, gf-time-picker .dashnav-refresh-action {
+	display: none;
+}
+
+navbar .navbar-page-btn {
+	display: none;
+}
+
+ .sidemenu > li.active, .sidemenu > li:hover {
+      background-color: transparent !important;
+}
+
+.sidemenu-open .sidemenu-wrapper {
+	z-index:1001;
+	width:220px;
+	top:0;
+	.sidemenu-org-section {
+
+		li::hover {
+				background:transparent !important;
+		}
+		a::hover {
+				background:transparent !important;
+		}
+	}
+
+	.sidemenu-item {
+		padding-left: 0;
+		color: #a7b1c2;
+		font-weight: 600;
+		font-size: 13px;
+
+		.sidemenu-icon {
+			width: 32px;
+			
+			i {
+				color: #a7b1c2;
+			    font-size: 16px;
+			    left: 4px;
+			    top: 3px;
+			    opacity: 1;
+			}	
+		}
+		.sidemenu-item-text {
+			padding-left: 0;
+		}
+
+		&:hover .sidemenu-icon i, &:hover .sidemenu-item-text{
+				color:White;
+		}
+	}
+}
+
+.search-button-row-explore-link {
+	display: none;
+}
+
+.panel-title {
+	-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+background-color: #ffffff;
+border-color: #e7eaec;
+border-image: none;
+border-style: solid solid none;
+border-width: 2px 0 0;
+color: inherit;
+margin-bottom: 0;
+padding: 15px 15px 7px;
+min-height: 48px;
+}
+
+.panel-title-text {
+	display: inline-block;
+font-size: 14px;
+margin: 0 0 7px;
+padding: 0;
+text-overflow: ellipsis;
+float: left;
+}
