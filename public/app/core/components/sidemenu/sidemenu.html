@@ -1,6 +1,33 @@
 <ul class="sidemenu">
 
-	<li class="sidemenu-org-section" ng-if="::ctrl.isSignedIn" class="dropdown">
+<li class="nav-header" ng-if="::ctrl.isSignedIn" class="dropdown">
+
+                <div class="profile-element dropdown" uib-dropdown="">
+                    <img alt="image" class="" ng-src="{{::ctrl.user.gravatarUrl}}">
+                    <a uib-dropdown-toggle="" href="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                            <span class="clear">
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">{{::ctrl.user.name}}</strong>
+                             </span>
+                                <span class="text-muted text-xs block">{{::ctrl.user.orgName}} <b class="caret"></b></span>
+                            </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInDown m-t-xs" id="profile-dropdown-menu" role="menu" uib-dropdown-menu="">
+						<li ng-repeat="menuItem in ctrl.orgMenu" ng-class="::menuItem.cssClass">
+							<span ng-show="::menuItem.section">{{::menuItem.section}}</span>
+							<a href="{{::menuItem.url}}" ng-show="::menuItem.url" target="{{::menuItem.target}}">
+								<i class="{{::menuItem.icon}}" ng-show="::menuItem.icon"></i>
+								{{::menuItem.text}}
+							</a>
+						</li>
+					</ul>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+
+<!-- 	<li class="sidemenu-org-section" ng-if="::ctrl.isSignedIn" class="dropdown">
 		<a class="sidemenu-org" href="profile">
 			<div class="sidemenu-org-avatar">
 				<img ng-src="{{::ctrl.user.gravatarUrl}}">
@@ -14,6 +41,9 @@
 				<span class="sidemenu-org-name sidemenu-item-text">{{::ctrl}}</span>
 			</div>
 		</a>
+
+
+
 		<i class="fa fa-caret-right"></i>
 		<ul class="dropdown-menu" role="menu">
 			<li ng-repeat="menuItem in ctrl.orgMenu" ng-class="::menuItem.cssClass">
@@ -24,7 +54,7 @@
 				</a>
 			</li>
 		</ul>
-	</li>
+	</li> -->
 
 	<li class="sidemenu-org-section"  class="dropdown">
 		<ul role="menu" class="search-results-container" ng-if="!ctrl.tagsMode">

@@ -102,7 +102,6 @@ export function grafanaAppDirective(playlistSrv, contextSrv) {
       body.toggleClass('sidemenu-open', true);
       contextSrv.setPinnedState(true);
       body.toggleClass('sidemenu-pinned', true);
-      
       // tooltip removal fix
       // manage page classes
       var pageClass;

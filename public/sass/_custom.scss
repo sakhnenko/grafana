@@ -30,6 +30,18 @@
 	left: 215px;
 }
 
+.sidemenu > li.active #profile-dropdown-menu, .sidemenu > li:hover #profile-dropdown-menu {
+	left: 0;
+	z-index: 2000;
+	top: 95px;
+
+	.dropdown-menu-title {
+	    font-weight: 800;
+	    padding-left: 8px;
+	    padding-top: 10px;
+	}
+}
+
 .search-field-wrapper {
 	display:none;
 }
@@ -56,21 +68,46 @@ gf-time-picker .gf-timepicker-time-control, gf-time-picker .dashnav-refresh-acti
 navbar .navbar-page-btn {
 	display: none;
 }
+.navbar-inner {
+	min-height: 50px;
+	background-color: #f3f3f4;
+	border-bottom: 1px solid #e7eaec;
+
+
+	li > a .fa {
+		font-size: 145% !important;
+		color: #999c9e;
+	}
+}
 
  .sidemenu > li.active, .sidemenu > li:hover {
       background-color: transparent !important;
 }
 
+
 .sidemenu-open .sidemenu-wrapper {
 	z-index:1001;
 	width:220px;
 	top:0;
+	.nav-header {
+		background-image: url("/public/img/header-profile.png");
+
+		.caret {
+			border-top-color: #8095a8;
+		}
+	}
+	.profile-element {
+		img {
+			width: 50px;
+		}
+	}
+
 	.sidemenu-org-section {
 
-		li::hover {
+		li:hover {
 				background:transparent !important;
 		}
-		a::hover {
+		a:hover {
 				background:transparent !important;
 		}
 	}
@@ -81,16 +118,15 @@ navbar .navbar-page-btn {
 		font-weight: 600;
 		font-size: 13px;
 
-		.sidemenu-icon {
+		.sidemenu-icon{
 			width: 32px;
-			
-			i {
+			i{
 				color: #a7b1c2;
 			    font-size: 16px;
 			    left: 4px;
 			    top: 3px;
 			    opacity: 1;
-			}	
+			}
 		}
 		.sidemenu-item-text {
 			padding-left: 0;
@@ -136,7 +172,7 @@ navbar .navbar-page-btn {
 	left:-15px;
 
 	&:hover {
-    	left: 0px; 
+    	left: 0px;
     }
 }
 
@@ -243,15 +279,15 @@ box-shadow: none;
   display: none;
 }
 
-.panel-container.collapsed .fa.fa-chevron-up:before {
+.panel-container.collapsed .fa.fa-chevron-up::before {
   content: "\f078";
 }
 
-.panel-container.collapsed .fa.fa-chevron-down:before {
+.panel-container.collapsed .fa.fa-chevron-down::before {
   content: "\f077";
 }
 
-.panel-container:after, .panel-container:before {
+.panel-container::after, .panel-container::before {
   display: table;
 }
 
