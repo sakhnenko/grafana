@@ -28,7 +28,7 @@ export class TimePickerCtrl {
   isUtc: boolean;
   daterangepicker: any;
   datePicker: any;
-  opts: any;
+  dateOpts: any;
 
 
   /** @ngInject */
@@ -41,23 +41,9 @@ export class TimePickerCtrl {
     $rootScope.onAppEvent('dash-editor-hidden', () => this.isOpen = false, $scope);
     this.init();
 
-     $scope.$watch('datePicker', function(newDate) {
-        var range = {from: newDate.startDate, to: newDate.endDate};
-    
-        $scope.ctrl.timeSrv.setTime(range);
-      }, false);
-  }
 
-  init() {
-    this.panel= this.dashboard.timepicker;
 
-    _.defaults(this.panel, TimePickerCtrl.defaults);
-    var time = angular.copy(this.timeSrv.timeRange());
-    var timeRaw = angular.copy(this.timeSrv.timeRange(false));
-
-   
-
-    this.opts = {
+    this.dateOpts = {
         opens: 'left',
         locale: {
             applyClass: 'btn-green',
@@ -67,9 +53,22 @@ export class TimePickerCtrl {
             'Last 30 Days': [moment().subtract(29, 'days'), moment()]
         }
     };
+    this.datePicker = {startDate: timeSrv.time.from, endDate: timeSrv.time.to};
 
-    this.datePicker = {startDate: null, endDate: null};
-    this.datePicker.startDate = moment().subtract(4, "days");
+    $scope.$watch('ctrl.datePicker', function(newDate) {
+        var range = {from: newDate.startDate, to: newDate.endDate};
+        $scope.ctrl.timeSrv.setTime(range);
+    }, false);
+
+  }
+
+  init() {
+    this.panel= this.dashboard.timepicker;
+
+    _.defaults(this.panel, TimePickerCtrl.defaults);
+    var time = angular.copy(this.timeSrv.timeRange());
+    var timeRaw = angular.copy(this.timeSrv.timeRange(false));
+
 
     if (!this.dashboard.isTimezoneUtc()) {
       time.from.local();
@@ -95,8 +94,6 @@ export class TimePickerCtrl {
     if (!this.isOpen) {
       this.timeRaw = timeRaw;
     }
-
-
   }
 
   zoom(factor) {
