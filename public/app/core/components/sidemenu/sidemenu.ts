@@ -51,8 +51,6 @@ export class SideMenuCtrl {
 
 
   openSearch() {
-    console.log("Open sesamie");
-
     this.isOpen = true;
     this.giveSearchFocus = 0;
     this.selectedIndex = -1;

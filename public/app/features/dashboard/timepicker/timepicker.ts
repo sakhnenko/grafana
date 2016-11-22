@@ -3,6 +3,7 @@
 import _ from 'lodash';
 import angular from 'angular';
 import moment from 'moment';
+import daterangepicker from 'daterangepicker';
 
 import * as rangeUtil from 'app/core/utils/rangeutil';
 
@@ -20,10 +21,15 @@ export class TimePickerCtrl {
   timeRaw: any;
   tooltip: string;
   rangeString: string;
+  shortRangeString: string;
   timeOptions: any;
   refresh: any;
   isOpen: boolean;
   isUtc: boolean;
+  daterangepicker: any;
+  datePicker: any;
+  opts: any;
+
 
   /** @ngInject */
   constructor(private $scope, private $rootScope, private timeSrv) {
@@ -33,17 +39,37 @@ export class TimePickerCtrl {
     $rootScope.onAppEvent('shift-time-backward', () => this.move(-1), $scope);
     $rootScope.onAppEvent('refresh', () => this.init(), $scope);
     $rootScope.onAppEvent('dash-editor-hidden', () => this.isOpen = false, $scope);
-
     this.init();
+
+     $scope.$watch('datePicker', function(newDate) {
+        var range = {from: newDate.startDate, to: newDate.endDate};
+    
+        $scope.ctrl.timeSrv.setTime(range);
+      }, false);
   }
 
   init() {
-    this.panel = this.dashboard.timepicker;
+    this.panel= this.dashboard.timepicker;
 
     _.defaults(this.panel, TimePickerCtrl.defaults);
-
     var time = angular.copy(this.timeSrv.timeRange());
     var timeRaw = angular.copy(this.timeSrv.timeRange(false));
+
+   
+
+    this.opts = {
+        opens: 'left',
+        locale: {
+            applyClass: 'btn-green',
+        },
+        ranges: {
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()]
+        }
+    };
+
+    this.datePicker = {startDate: null, endDate: null};
+    this.datePicker.startDate = moment().subtract(4, "days");
 
     if (!this.dashboard.isTimezoneUtc()) {
       time.from.local();
@@ -59,6 +85,7 @@ export class TimePickerCtrl {
     }
 
     this.rangeString = rangeUtil.describeTimeRange(timeRaw);
+    this.shortRangeString = moment(time.from.toDate()).format("MMM Do YYYY") + " to " + moment(time.to.toDate()).format("MMM Do YYYY");
     this.absolute = {fromJs: time.from.toDate(), toJs: time.to.toDate()};
     this.tooltip = this.dashboard.formatDate(time.from) + ' <br>to<br>';
     this.tooltip += this.dashboard.formatDate(time.to);
@@ -68,6 +95,8 @@ export class TimePickerCtrl {
     if (!this.isOpen) {
       this.timeRaw = timeRaw;
     }
+
+
   }
 
   zoom(factor) {

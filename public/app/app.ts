@@ -15,6 +15,8 @@ import angular from 'angular';
 import config from 'app/core/config';
 import _ from 'lodash';
 import {coreModule} from './core/core';
+import 'bootstrap-datepicker';
+import 'angular-datepicker';
 
 export class GrafanaApp {
   registerFunctions: any;
@@ -38,7 +40,7 @@ export class GrafanaApp {
   }
 
   init() {
-    var app = angular.module('grafana', []);
+    var app = angular.module('grafana', ['daterangepicker']);
     app.constant('grafanaVersion', "@grafanaVersion@");
 
     app.config(($locationProvider, $controllerProvider, $compileProvider, $filterProvider, $httpProvider, $provide) => {

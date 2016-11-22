@@ -1,4 +1,9 @@
 <ul class="nav gf-timepicker-nav">
+	<li class="newPicker">
+		<i class="fa fa-calendar"></i>
+		<input date-range-picker id="daterange2" name="daterange2" class="form-control date-picker" type="text"   min="'2015-01-23'" max="'2015-08-25'" ng-model="datePicker" ng-change="ctrl.changeDate({{datePicker}})"  options="opts" required value="{{ctrl.shortRangeString}}"/>
+		<i class="fa fa-sort-desc"></i>
+	</li>
 
 	<li class="dashnav-move-timeframe gf-timepicker-time-control" bs-tooltip="'Shift time backward <br> (left arrow key)'" data-placement="bottom">
 		<a ng-click='ctrl.move(-1)'><i class="fa fa-chevron-left"></i></a>
@@ -10,7 +15,8 @@
 		<a ng-click='ctrl.move(1)'><i class="fa fa-chevron-right"></i></a>
 	</li>
 
-	<li>
+
+	<li class="dashnav-time">
 		<a bs-tooltip="ctrl.tooltip" data-placement="bottom" ng-click="ctrl.openDropdown()" class="gf-timepicker-nav-btn">
 			<i class="fa fa-clock-o"></i>
 			<span ng-bind="ctrl.rangeString"></span>

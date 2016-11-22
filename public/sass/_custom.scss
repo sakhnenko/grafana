@@ -20,6 +20,27 @@
 }
 
 
+.newPicker {
+	width:300px;
+	#daterange2 {
+	    width: 270px;
+	    padding-left: 41px;
+	    margin-top: 7px;
+	    display: inline-block;
+	}	
+	.fa-calendar {
+	    position: relative;
+	    left: 29px;
+	}
+	.fa-sort-desc {
+	    position: relative;
+	    left: -20px;
+	    top: -2px;
+	}
+}
+
+
+
 .search-results-container {
 	height: auto;
 	background: #293846;
@@ -61,7 +82,7 @@
 	color:White;
 }
 
-gf-time-picker .gf-timepicker-time-control, gf-time-picker .dashnav-refresh-action, .navbar-brand-btn  {
+gf-time-picker .gf-timepicker-time-control, gf-time-picker .dashnav-refresh-action, .navbar-brand-btn, gf-time-picker .dashnav-time  {
 	display: none;
 }
 
