@@ -37,8 +37,10 @@ export class SideMenuCtrl {
     this.showSignout = this.contextSrv.isSignedIn && !config['authProxyEnabled'];
 
     this.mainLinks = config.bootData.mainNavLinks;
+    if (this.isSignedIn){
     this.openUserDropdown();
     this.openSearch();
+    }
     this.loginUrl = 'login?redirect=' + encodeURIComponent(this.$location.path());
 
     this.$scope.$on('$routeChangeSuccess', () => {

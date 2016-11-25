@@ -12,10 +12,13 @@
 		left: 0;
 		bottom: 0;
 		top: 0;
+
 		.dashboard-container {
 			padding-left: 0;
 			overflow: hidden;
+			padding-bottom:150px;
 		}
+
 	}
 }
 
@@ -24,9 +27,26 @@
 	width:300px;
 	#daterange2 {
 	    width: 270px;
-	    padding-left: 33px;
+	    padding-left: 18px;
 	    margin-top: 7px;
 	    display: inline-block;
+	    cursor: pointer;
+	    &:before, &:after {
+			font-family: FontAwesome;
+			font-weight: normal;
+			font-style: normal;
+			display: inline-block;
+			text-decoration: inherit;
+			content:"\f073";
+			left: -11px;
+			position: relative;
+		}
+		&:after {
+			content:"\f0dd";
+			left: 8px;
+			top: -3px;
+		}
+
 	}
 	.fa-calendar {
 	    position: relative;
@@ -37,6 +57,7 @@
 	    left: -20px;
 	    top: -2px;
 	}
+
 }
 
 
@@ -82,7 +103,7 @@
 	color:White;
 }
 
-gf-time-picker .gf-timepicker-time-control, gf-time-picker .dashnav-refresh-action, .navbar-brand-btn, gf-time-picker .dashnav-time  {
+gf-time-picker .gf-timepicker-time-control, .navbar-brand-btn, gf-time-picker .dashnav-time  {
 	display: none;
 }
 

@@ -1,4 +1,4 @@
-<ul class="sidemenu">
+<ul class="sidemenu" >
 
 <li class="nav-header" ng-if="::ctrl.isSignedIn" class="dropdown">
 
@@ -56,7 +56,7 @@
 		</ul>
 	</li> -->
 
-	<li class="sidemenu-org-section"  class="dropdown">
+	<li class="sidemenu-org-section"  class="dropdown" ng-if="::ctrl.isSignedIn" >
 		<ul role="menu" class="search-results-container" ng-if="!ctrl.tagsMode">
 			<li ng-hide="ctrl.results.length">No dashboards matching your query were found.</li>
 			<li ng-repeat="row in ctrl.results">
@@ -85,7 +85,7 @@
 
 
 
-	<li ng-repeat="item in ::ctrl.mainLinks" class="dropdown">
+	<li ng-repeat="item in ::ctrl.mainLinks" class="dropdown" ng-if="::ctrl.isSignedIn" >
 		<a href="{{::item.url}}" class="sidemenu-item sidemenu-main-link" target="{{::item.target}}">
 			<span class="icon-circle sidemenu-icon">
 				<i class="{{::item.icon}}" ng-show="::item.icon"></i>
@@ -103,7 +103,7 @@
 			</li>
 		</ul>
 	</li>
-
+<!-- 
 	<li ng-show="::!ctrl.isSignedIn">
     <a href="{{ctrl.loginUrl}}" class="sidemenu-item" target="_self">
 			<span class="icon-circle sidemenu-icon"><i class="fa fa-fw fa-sign-in"></i></span>
@@ -116,6 +116,6 @@
 			<span class="icon-circle sidemenu-icon"><i class="fa fa-fw fa-thumb-tack"></i></span>
 			<span class="sidemenu-item-text">Pin</span>
 		</a>
-	</li>
+	</li> -->
 </ul>
 

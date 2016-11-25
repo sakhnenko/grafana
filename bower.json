@@ -18,7 +18,6 @@
     "angular-route": "~1.5.3",
     "angular-mocks": "~1.5.3",
     "angular-sanitize": "~1.5.3",
-    "angular-bindonce": "~0.3.3",
-    "angular-daterangepicker": "^0.2.2"
+    "angular-bindonce": "~0.3.3"
   }
 }

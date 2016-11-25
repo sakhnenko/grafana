@@ -26,7 +26,6 @@ function (angular, coreModule, config) {
 
     $scope.init = function() {
       $scope.$watch("loginMode", $scope.loginModeChanged);
-
       var params = $location.search();
       if (params.failedMsg) {
         $scope.appEvent('alert-warning', ['Login Failed', params.failedMsg]);

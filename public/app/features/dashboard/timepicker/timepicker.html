@@ -1,8 +1,6 @@
 <ul class="nav gf-timepicker-nav">
 	<li class="newPicker">
-		<i class="fa fa-calendar"></i>
-		<input date-range-picker id="daterange2" name="daterange2" class="form-control date-picker" type="text"   min="'2015-01-23'" max="'2015-08-25'" ng-model="ctrl.datePicker" ng-change="ctrl.changeDate({{datePicker}})"  options="ctrl.dateOpts" required value="{{ctrl.shortRangeString}}"/>
-		<i class="fa fa-sort-desc"></i>
+		<div date-range-picker id="daterange2" name="daterange2" class="form-control date-picker" type="text"   min="'2015-01-23'" max="'2015-08-25'" ng-model="ctrl.datePicker"  options="ctrl.dateOpts" required >{{ctrl.shortRangeString}}</div> 
 	</li>
 
 	<li class="dashnav-move-timeframe gf-timepicker-time-control" bs-tooltip="'Shift time backward <br> (left arrow key)'" data-placement="bottom">
